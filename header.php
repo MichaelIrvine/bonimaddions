@@ -23,7 +23,36 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'bonimaddison' ); ?></a>
+		<section>
+		<div class="left-column-contact">
+		<?php
+			if( function_exists('get_field') ){
+				echo '<p class="contact-title">Contact Us</p>';
+				if( get_field('contact_phone_number', 'option') ){
+					echo '<p class="contact-phone-number">'; the_field('contact_phone_number', 'option'); echo '</p>';
+				}
+				
+				if( get_field('contact_email', 'option') ){
+					echo '<p class="contact-email">'; the_field('contact_email', 'option'); echo '</p>';
+				}
 
+				if( get_field('contact_address', 'option') ){
+					echo '<div class="contact-address">'; 
+					echo the_field('contact_address', 'option'); 
+					echo '</div>';
+				}
+			}
+			?>
+			</div> 
+			<!-- End Of Left Column -->
+			<div class="close-contact">
+				<button>
+					close
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+		</section>
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php

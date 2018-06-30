@@ -165,3 +165,42 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+// -------------------------------
+// ------ SVG support ------------
+// -------------------------------
+
+
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
+
+
+/* --------------------------- ACF Options Page ---------------------------- */
+
+if( function_exists('acf_add_options_page') ) {
+    $args = array(
+          'page_title' => 'Contact Info',
+		  'menu_title' => 'Contact Info',
+		  'menu_slug'  => 'contact_info',
+          'icon_url' => 'dashicons-schedule'
+          //other args
+      );
+    acf_add_options_page($args);
+
+}
+
+
+if( function_exists('acf_add_options_page') ) {
+    $args = array(
+          'page_title' => 'Copyright Info',
+		  'menu_title' => 'Copyright Info',
+		  'menu_slug'  => 'copyright_info',
+          'icon_url' => 'dashicons-edit'
+          //other args
+      );
+    acf_add_options_page($args);
+
+}
